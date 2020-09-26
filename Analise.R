@@ -166,12 +166,8 @@ autoplot(ts_test)
 plot(ts_train)
 lines(ts_test)
 
-  
-
-                          # Raalizando Arima
-
-
-
+ 
+ # Raalizando Arima
 
 
 fit1 <- auto.arima(ts_train, trace = T, stepwise = T,approximation = F,  lambda = 0.23)
@@ -217,12 +213,7 @@ ac1 <-broom::tidy(as.tibble(ac))
 
 
 
-
-
-
-
-                                 #ETS
-
+ #ETS
 
 
 
@@ -260,8 +251,7 @@ acfETS <- ggAcf(fit2$residuals) +
 
 
 
-                        # Rede Neural
-
+ # Rede Neural
 
 
 Ts_modred$residuals
@@ -304,10 +294,8 @@ ggsave("plotred.png",  dpi = 300, scale = T)
 
 
 
+#Regressao
 
-                      #Regress?o
-
-mean(ts)
 
 library(ggplot2)
 library(ggpmisc)
@@ -330,9 +318,6 @@ abline(h = 325.9)
 ggsave("Regre.png", dpi = 400)
 
 
-
-
-
 ts_reg <- tslm(ts ~ trend, data = ts) 
 coeff <- coefficients(ts_reg)
 eq = paste0("y = ", round(coeff[2],3), "x + ", round(coeff[1],1))
@@ -347,32 +332,3 @@ accuracy(ts_reg)
 
 
 
-
-
-
-
-
-
-#Time series cross validation
-
-
-e <- tsCV(ts, forecastfunction = naive, h = 8)
-# Compute the MSE values and remove missing values
-mse <- colMeans(e^2, na.rm = TRUE)
-
-
-# Plot the MSE values against the forecast horizon
-data.frame(h = 1:8, MSE = mse) %>%
-  ggplot(aes(x = h, y = MSE)) + geom_point()
-
-naive
-
-
-
-
-#Obs
-
-# xreg ? pra adicioanr vari?vel idependente para realizar o modelo e previs?es
-# ao realizar previsoes utilziando ela ? necess?rio a pre exist?ncia do valor
-
-# Trasformando Serie Nao Estacionaria - EM - Estacionaria
