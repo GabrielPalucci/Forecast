@@ -10,7 +10,7 @@ p_load("forecast", "urca", "lmtest", "seasonal",
 
 
 
-#Adicionando dados Vaz?o
+#Adicionando dados cotas
 
 
 
@@ -45,11 +45,11 @@ which(is.na(ts))
 
 ggplot_na_distribution(ts) +
   theme_minimal(base_size = 10) +
-  labs(title = "Distribui??o dos Valores Sem Informa??es", 
-       subtitle = "Serie Temporal - L?dario",
+  labs(title = "Distribuicaoo dos Valores Sem Informacoes", 
+       subtitle = "Serie Temporal - Ladario",
        caption = "Esta??o 66825000",
        x = "Lag",
-       y = "Vaz?o")
+       y = "Vazio")
 
 ggsave("Na.png", dpi = 400)
 
@@ -90,7 +90,7 @@ ts_decom <-decompose(ts)
 
 autoplot(ts_decom) +
   theme_minimal(base_size = 10) +
-  labs(title = "Decomposi??o da Serie Temporal", x = "Anos",
+  labs(title = "Decomposicao da Serie Temporal", x = "Anos",
        caption = "Esta??o 66825000")
 
 
